@@ -4,27 +4,40 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Auction {
-    private UUID uuid;
+    private final UUID uuid;
+    private final String auctionName;
     private final Product product;
     private final User auctionOwner;
     private final LocalDateTime startDate;
     private final LocalDateTime endDate;
     private double currentBid;
-    private final double buyNowAmount;
+    private double buyNowAmount;
     private final boolean buyNowAvailable;
 
-    public Auction(Product product, User auctionOwner, int auctionDuration, double currentBid,
-                   double buyNowAmount, boolean buyNowAvailable) {
-
-
-        this.uuid = UUID.randomUUID();
+    public Auction(String auctionName, UUID uuid, Product product, User auctionOwner, int auctionDuration, double currentBid, double buyNowAmount) {
+        this.auctionName = auctionName;
+        this.uuid = uuid;
         this.product = product;
         this.auctionOwner = auctionOwner;
         this.startDate = LocalDateTime.now();
         this.endDate = startDate.plusDays(auctionDuration);
         this.currentBid = currentBid;
+        this.buyNowAvailable = true;
         this.buyNowAmount = buyNowAmount;
-        this.buyNowAvailable = buyNowAvailable;
+    }
+    public Auction(String auctionName, UUID uuid, Product product, User auctionOwner, int auctionDuration, double currentBid) {
+        this.auctionName = auctionName;
+        this.uuid = uuid;
+        this.product = product;
+        this.auctionOwner = auctionOwner;
+        this.startDate = LocalDateTime.now();
+        this.endDate = startDate.plusDays(auctionDuration);
+        this.currentBid = currentBid;
+        this.buyNowAvailable = false;
+    }
+
+    public UUID getUuid() {
+        return uuid;
     }
 
     public Product getProduct() {

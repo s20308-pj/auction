@@ -5,6 +5,7 @@ import pl.czaplinski.model.Product;
 import pl.czaplinski.model.User;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -23,12 +24,12 @@ public class AuctionService {
         return auctionId;
     }
 
-    public Auction getAuction(UUID auctionId) {
-        return repository.getAuctionList().stream().filter(auction -> auction.getUuid().equals(auctionId)).findAny().orElseThrow(null);
+    public Optional<Auction> getAuction(UUID auctionId) {
+        return repository.getAuctionList().stream().filter(auction -> auction.getUuid().equals(auctionId)).findAny();
     }
 
-    public ArrayList<Auction> getAuctions() {
-        return repository.getAuctionList();
+    public Optional<ArrayList<Auction>> getAuctions() {
+        return Optional.ofNullable(repository.getAuctionList());
     }
 
     public ArrayList<Auction> searchByProductName(String name) {
@@ -41,17 +42,14 @@ public class AuctionService {
 
 
     public boolean makeAnOffer(UUID auctionID, double amount) {
-        if (getAuction(auctionID) != null && getAuction(auctionID).getCurrentBid() < amount) {
-            getAuction(auctionID).setCurrentBid(amount);
+        if (getAuction(auctionID).isPresent() && getAuction(auctionID).get().getCurrentBid() < amount) {
+            getAuction(auctionID).get().setCurrentBid(amount);
             return true;
         }
         return false;
     }
 
     public boolean buy(UUID auctionId) {
-        if (getAuction(auctionId) != null && getAuction(auctionId).isBuyNowAvailable()) {
-            return true;
-        }
-        return false;
+        return getAuction(auctionId).isPresent() && getAuction(auctionId).get().isBuyNowAvailable();
     }
 }

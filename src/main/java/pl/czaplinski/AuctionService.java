@@ -10,7 +10,11 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class AuctionService {
-    Repository repository = new Repository();
+    public AuctionService(Repository repository) {
+        this.repository = repository;
+    }
+
+    Repository repository = null;
 
     public UUID createNewAuction(String auctionName, Product product, User auctionOwner, int auctionDuration, double currentBid, double buyNowAmount) {
         UUID uuid = UUID.randomUUID();

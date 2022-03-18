@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         Repository repository = new Repository();
-        AuctionService auctionService = new AuctionService();
+        AuctionService auctionService = new AuctionService(repository);
         Product product1 = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
         Product product2 = new Product("VW Pasat", "Niemiec płakał jak sprzedawał", "/pasek.img");
 
@@ -27,23 +27,35 @@ public class Main {
         System.out.println(auctionId1);
         System.out.println(auctionId2);
 
-        System.out.println("--test getAuction--");
+        System.out.printf("--test getAuction should pass: UUID: %s--\n", auctionId1);
+
+        auctionService
+                .getAuction(auctionId1)
+                .ifPresentOrElse(
+                        a -> System.out.println(a.toString()),
+                        () -> System.out.println("Brak Aukcji")
+                );
+        System.out.printf("--test getAuction should fail: UUID: random--\n");
 
         auctionService
                 .getAuction(UUID.randomUUID())
-                .ifPresentOrElse(Auction::toString,
+                .ifPresentOrElse(
+                        a -> System.out.println(a.toString()),
                         () -> System.out.println("Brak Aukcji")
                 );
+
 
         System.out.println("--test getAuctions--");
         auctionService
                 .getAuctions()
-                .ifPresentOrElse(a -> System.out.println(a.toString()),
+                .ifPresentOrElse(
+                        a -> System.out.println(a.toString()),
                         () -> System.out.println("Brak Aukcji"));
 
 
         System.out.println("--test searchByAuctionOwnerLastName--");
-        auctionService.searchByAuctionOwnerLastName("K").forEach(a -> System.out.println(a.toString()));
+        auctionService.searchByAuctionOwnerLastName("K").forEach(
+                a -> System.out.println(a.toString()));
 
         System.out.println("--test searchByProductName--");
         auctionService.searchByProductName("VW").forEach(a -> System.out.println(a.toString()));

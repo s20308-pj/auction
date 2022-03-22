@@ -4,6 +4,7 @@ package pl.czaplinski;
 import pl.czaplinski.model.Auction;
 import java.util.ArrayList;
 
+@org.springframework.stereotype.Repository
 public class Repository {
 
     private ArrayList<Auction> auctionList = new ArrayList<>();

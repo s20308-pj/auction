@@ -1,5 +1,6 @@
 package pl.czaplinski;
 
+import org.springframework.stereotype.Service;
 import pl.czaplinski.model.Auction;
 import pl.czaplinski.model.Product;
 import pl.czaplinski.model.User;
@@ -9,6 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Service
 public class AuctionService {
     public AuctionService(Repository repository) {
         this.repository = repository;

@@ -1,15 +1,19 @@
 package pl.czaplinski;
 
-import pl.czaplinski.model.Auction;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import pl.czaplinski.model.Product;
 import pl.czaplinski.model.User;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
+@SpringBootApplication
 public class Main {
 
     public static void main(String[] args) {
+
+        SpringApplication.run(Main.class, args);
+        
         Repository repository = new Repository();
         AuctionService auctionService = new AuctionService(repository);
         Product product1 = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
@@ -20,9 +24,6 @@ public class Main {
 
         UUID auctionId1 = auctionService.createNewAuction("tani Opel", product1, user1, 25, 5000, 9000);
         UUID auctionId2 = auctionService.createNewAuction("Pasek w super stanie", product2, user2, 30, 15000);
-
-//        UUID auctionId1 = UUID.randomUUID();
-//        UUID auctionId2 = UUID.randomUUID();
 
         System.out.println(auctionId1);
         System.out.println(auctionId2);

@@ -19,19 +19,19 @@ public class AuctionService {
     Repository repository = null;
 
     public UUID createNewAuction(String auctionName, Product product, User auctionOwner, int auctionDuration, double currentBid, double buyNowAmount) {
-        UUID uuid = UUID.randomUUID();
-        repository.addAuctionToList(new Auction(auctionName, uuid, product, auctionOwner, auctionDuration, currentBid, buyNowAmount));
-        return uuid;
+        UUID randomUUID = UUID.randomUUID();
+        repository.addAuctionToList(new Auction(auctionName, randomUUID, product, auctionOwner, auctionDuration, currentBid, buyNowAmount));
+        return randomUUID;
     }
 
     public UUID createNewAuction(String auctionName, Product product, User auctionOwner, int auctionDuration, double currentBid) {
-        UUID auctionId = UUID.randomUUID();
-        repository.addAuctionToList(new Auction(auctionName, auctionId, product, auctionOwner, auctionDuration, currentBid));
-        return auctionId;
+        UUID randomUUID = UUID.randomUUID();
+        repository.addAuctionToList(new Auction(auctionName, randomUUID, product, auctionOwner, auctionDuration, currentBid));
+        return randomUUID;
     }
 
     public Optional<Auction> getAuction(UUID auctionId) {
-        return repository.getAuctionList().stream().filter(auction -> auction.getUuid().equals(auctionId)).findAny();
+        return repository.getAuctionList().stream().filter(auction -> auction.getUuid().equals(auctionId)).findFirst();
     }
 
     public Optional<ArrayList<Auction>> getAuctions() {

@@ -22,7 +22,7 @@ public class Main {
         User user1 = new User("Janusz", "KOKS", "kos@gmail.com");
         User user2 = new User("Zenon", "KACZMAR", "zecie@gmail.com");
 
-        UUID auctionId1 = auctionService.createNewAuction("tani Opel", product1, user1, 25, 5000, 9000);
+        UUID auctionId1 = auctionService.createNewAuction("Tani Opel", product1, user1, 25, 5000, 9000);
         UUID auctionId2 = auctionService.createNewAuction("Pasek w super stanie", product2, user2, 30, 15000);
 
         System.out.println(auctionId1);

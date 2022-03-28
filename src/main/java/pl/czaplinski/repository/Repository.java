@@ -1,9 +1,8 @@
-package pl.czaplinski;
+package pl.czaplinski.repository;
 
 
 import pl.czaplinski.model.Auction;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.UUID;
 
 @org.springframework.stereotype.Repository

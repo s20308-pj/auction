@@ -5,14 +5,20 @@ import org.junit.jupiter.api.Test;
 import pl.czaplinski.model.Auction;
 import pl.czaplinski.model.Product;
 import pl.czaplinski.model.User;
+import pl.czaplinski.repository.Repository;
+import pl.czaplinski.service.AuctionService;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.UUID;
 
 class AuctionServiceTest {
 
+    Product product1 = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
+    Product product2 = new Product("VW Pasat", "Niemiec płakał jak sprzedawał", "/pasek.img");
+
+    User user1 = new User("Janusz", "KOKS", "kos@gmail.com");
+    User user2 = new User("Zenon", "KACZMAR", "zecie@gmail.com");
 
     @Test
     void shouldCreateNewAuction() {
@@ -21,12 +27,8 @@ class AuctionServiceTest {
         Repository repository = new Repository();
         AuctionService auctionService = new AuctionService(repository);
 
-        Product product = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
-
-        User user = new User("Janusz", "KOKS", "kos@gmail.com");
-
         //when
-        UUID auctionUUID = auctionService.createNewAuction("test Fiat selling", product, user, 10, 10000, 15000);
+        UUID auctionUUID = auctionService.createNewAuction("test Fiat selling", product1, user1, 10, 10000, 15000);
 
         //then
         Assertions.assertEquals(repository.findById(auctionUUID).getUuid(), auctionUUID);
@@ -38,10 +40,6 @@ class AuctionServiceTest {
         //given
         Repository repository = new Repository();
         AuctionService auctionService = new AuctionService(repository);
-
-        Product product1 = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
-
-        User user1 = new User("Janusz", "KOKS", "kos@gmail.com");
 
         UUID auctionId1 = auctionService.createNewAuction("Tani Opel", product1, user1, 25, 5000, 9000);
 
@@ -58,12 +56,6 @@ class AuctionServiceTest {
         //given
         Repository repository = new Repository();
         AuctionService auctionService = new AuctionService(repository);
-
-        Product product1 = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
-        Product product2 = new Product("VW Pasat", "Niemiec płakał jak sprzedawał", "/pasek.img");
-
-        User user1 = new User("Janusz", "KOKS", "kos@gmail.com");
-        User user2 = new User("Zenon", "KACZMAR", "zecie@gmail.com");
 
         UUID auctionId1 = auctionService.createNewAuction("Tani Opel", product1, user1, 25, 5000, 9000);
         UUID auctionId2 = auctionService.createNewAuction("Pasek w super stanie", product2, user2, 30, 15000);
@@ -83,12 +75,6 @@ class AuctionServiceTest {
         Repository repository = new Repository();
         AuctionService auctionService = new AuctionService(repository);
 
-        Product product1 = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
-        Product product2 = new Product("VW Pasat", "Niemiec płakał jak sprzedawał", "/pasek.img");
-
-        User user1 = new User("Janusz", "KOKS", "kos@gmail.com");
-        User user2 = new User("Zenon", "KACZMAR", "zecie@gmail.com");
-
         UUID auctionId1 = auctionService.createNewAuction("Tani Opel", product1, user1, 25, 5000, 9000);
         UUID auctionId2 = auctionService.createNewAuction("Pasek w super stanie", product2, user2, 30, 15000);
 
@@ -106,12 +92,6 @@ class AuctionServiceTest {
         //given
         Repository repository = new Repository();
         AuctionService auctionService = new AuctionService(repository);
-
-        Product product1 = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
-        Product product2 = new Product("VW Pasat", "Niemiec płakał jak sprzedawał", "/pasek.img");
-
-        User user1 = new User("Janusz", "KOKS", "kos@gmail.com");
-        User user2 = new User("Zenon", "KACZMAR", "zecie@gmail.com");
 
         UUID auctionId1 = auctionService.createNewAuction("Tani Opel", product1, user1, 25, 5000, 9000);
         UUID auctionId2 = auctionService.createNewAuction("Pasek w super stanie", product2, user2, 30, 15000);
@@ -131,12 +111,6 @@ class AuctionServiceTest {
         Repository repository = new Repository();
         AuctionService auctionService = new AuctionService(repository);
 
-        Product product1 = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
-        Product product2 = new Product("VW Pasat", "Niemiec płakał jak sprzedawał", "/pasek.img");
-
-        User user1 = new User("Janusz", "KOKS", "kos@gmail.com");
-        User user2 = new User("Zenon", "KACZMAR", "zecie@gmail.com");
-
         UUID auctionId1 = auctionService.createNewAuction("Tani Opel", product1, user1, 25, 5000, 9000);
         UUID auctionId2 = auctionService.createNewAuction("Pasek w super stanie", product2, user2, 30, 15000);
 
@@ -155,18 +129,11 @@ class AuctionServiceTest {
         Repository repository = new Repository();
         AuctionService auctionService = new AuctionService(repository);
 
-        Product product1 = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
-        Product product2 = new Product("VW Pasat", "Niemiec płakał jak sprzedawał", "/pasek.img");
-
-        User user1 = new User("Janusz", "KOKS", "kos@gmail.com");
-        User user2 = new User("Zenon", "KACZMAR", "zecie@gmail.com");
-
         UUID auctionId1 = auctionService.createNewAuction("Tani Opel", product1, user1, 25, 5000, 9000);
         UUID auctionId2 = auctionService.createNewAuction("Pasek w super stanie", product2, user2, 30, 15000);
 
         //when
         ArrayList<Auction> auctions = auctionService.searchByAuctionOwnerLastName("KOKS");
-
 
         //then
         Assertions.assertEquals(repository.findById(auctionId1), auctions.get(0));
@@ -181,11 +148,8 @@ class AuctionServiceTest {
         Repository repository = new Repository();
         AuctionService auctionService = new AuctionService(repository);
 
-        Product product = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
 
-        User user = new User("Janusz", "KOKS", "kos@gmail.com");
-
-        UUID auctionId = auctionService.createNewAuction("Tani Opel", product, user, 25, 5000, 9000);
+        UUID auctionId = auctionService.createNewAuction("Tani Opel", product1, user1, 25, 5000, 9000);
 
         //when
         boolean isRaised = auctionService.makeAnOffer(auctionId, 5500);
@@ -200,13 +164,10 @@ class AuctionServiceTest {
         Repository repository = new Repository();
         AuctionService auctionService = new AuctionService(repository);
 
-        Product product = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
-
-        User user = new User("Janusz", "KOKS", "kos@gmail.com");
-
-        UUID auctionId = auctionService.createNewAuction("Tani Opel", product, user, 25, 5000, 9000);
+        UUID auctionId = auctionService.createNewAuction("Tani Opel", product1, user1, 25, 5000, 9000);
 
         UUID randomUUID = UUID.randomUUID();
+
         //when
         boolean isRaised = auctionService.makeAnOffer(auctionId, 4500);
         boolean auctionNotFound = auctionService.makeAnOffer(randomUUID, 4500);
@@ -222,11 +183,7 @@ class AuctionServiceTest {
         Repository repository = new Repository();
         AuctionService auctionService = new AuctionService(repository);
 
-        Product product = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
-
-        User user = new User("Janusz", "KOKS", "kos@gmail.com");
-
-        UUID auctionId = auctionService.createNewAuction("Tani Opel", product, user, 25, 5000, 9000);
+        UUID auctionId = auctionService.createNewAuction("Tani Opel", product1, user1, 25, 5000, 9000);
 
         //when
         boolean isBoughtProduct = auctionService.buy(auctionId);

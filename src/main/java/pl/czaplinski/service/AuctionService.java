@@ -1,6 +1,7 @@
-package pl.czaplinski;
+package pl.czaplinski.service;
 
 import org.springframework.stereotype.Service;
+import pl.czaplinski.repository.Repository;
 import pl.czaplinski.model.Auction;
 import pl.czaplinski.model.Product;
 import pl.czaplinski.model.User;

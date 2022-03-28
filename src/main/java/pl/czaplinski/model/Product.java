@@ -3,6 +3,7 @@ package pl.czaplinski.model;
 import java.util.UUID;
 
 public class Product {
+
     private UUID uuid;
     private String name;
     private String description;

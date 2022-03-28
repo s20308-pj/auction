@@ -2,6 +2,7 @@ package pl.czaplinski.model;
 
 public class User {
 
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -11,6 +12,9 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public User() {
     }
 
     public String getFirstName() {

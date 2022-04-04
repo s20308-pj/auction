@@ -1,7 +1,9 @@
 package pl.czaplinski;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import pl.czaplinski.model.Product;
 import pl.czaplinski.model.User;
 import pl.czaplinski.repository.Repository;
@@ -10,14 +12,15 @@ import pl.czaplinski.service.AuctionService;
 import java.util.UUID;
 
 @SpringBootApplication
+
 public class Main {
 
     public static void main(String[] args) {
 
         SpringApplication.run(Main.class, args);
         
-        Repository repository = new Repository();
-        AuctionService auctionService = new AuctionService(repository);
+//        Repository repository = new Repository();
+//        AuctionService auctionService = new AuctionService(repository);
 
 //        Product product1 = new Product("Opel Astra", "Funkiel nówka, nie śmigany", "/opel.img");
 //        Product product2 = new Product("VW Pasat", "Niemiec płakał jak sprzedawał", "/pasek.img");

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @org.springframework.stereotype.Repository
+
 public class Repository {
 
     private ArrayList<Auction> auctionList = new ArrayList<>();

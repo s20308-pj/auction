@@ -1,18 +1,33 @@
 package pl.czaplinski.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Getter
+@Setter
+@Entity
 public class Auction {
-    private final UUID uuid;
-    private final String auctionName;
-    private final Product product;
-    private final User auctionOwner;
-    private final LocalDateTime startDate;
-    private final LocalDateTime endDate;
+    @Id
+    private UUID uuid;
+    private String auctionName;
+    @ManyToOne
+    @JoinColumn
+    private Product product;
+    @ManyToOne
+    @JoinColumn
+    private User auctionOwner;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private double currentBid;
     private double buyNowAmount;
-    private final boolean buyNowAvailable;
+    private boolean buyNowAvailable;
 
     public Auction(String auctionName, UUID uuid, Product product, User auctionOwner, int auctionDuration, double currentBid, double buyNowAmount) {
         this.auctionName = auctionName;
@@ -25,6 +40,7 @@ public class Auction {
         this.buyNowAvailable = true;
         this.buyNowAmount = buyNowAmount;
     }
+
     public Auction(String auctionName, UUID uuid, Product product, User auctionOwner, int auctionDuration, double currentBid) {
         this.auctionName = auctionName;
         this.uuid = uuid;
@@ -36,40 +52,7 @@ public class Auction {
         this.buyNowAvailable = false;
     }
 
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public User getAuctionOwner() {
-        return auctionOwner;
-    }
-
-    public LocalDateTime getStartDate() {
-        return startDate;
-    }
-
-    public LocalDateTime getEndDate() {
-        return endDate;
-    }
-
-    public double getCurrentBid() {
-        return currentBid;
-    }
-
-    public double getBuyNowAmount() {
-        return buyNowAmount;
-    }
-
-    public boolean isBuyNowAvailable() {
-        return buyNowAvailable;
-    }
-
-    public void setCurrentBid(double currentBid) {
-        this.currentBid = currentBid;
+    public Auction() {
     }
 
     @Override

@@ -1,15 +1,7 @@
 package pl.czaplinski;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import pl.czaplinski.model.Product;
-import pl.czaplinski.model.User;
-import pl.czaplinski.repository.Repository;
-import pl.czaplinski.service.AuctionService;
-
-import java.util.UUID;
 
 @SpringBootApplication
 

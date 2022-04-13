@@ -1,16 +1,7 @@
 package pl.czaplinski;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import pl.czaplinski.model.Auction;
-import pl.czaplinski.model.Product;
-import pl.czaplinski.model.User;
-import pl.czaplinski.repository.Repository;
-import pl.czaplinski.service.AuctionService;
-
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.UUID;
+import pl.czaplinski.models.Product;
+import pl.czaplinski.models.User;
 
 class AuctionServiceTest {
 
@@ -20,6 +11,9 @@ class AuctionServiceTest {
     User user1 = new User("Janusz", "KOKS", "kos@gmail.com");
     User user2 = new User("Zenon", "KACZMAR", "zecie@gmail.com");
 
+//    @Mock
+//    AuctionRepository auctionRepository;
+//
 //    @Test
 //    void shouldCreateNewAuction() {
 //
@@ -30,8 +24,8 @@ class AuctionServiceTest {
 //        UUID auctionUUID = auctionService.createNewAuction("test Fiat selling", product1.getId(), user1.getId(), 10, 10000, 15000);
 //
 //        //then
-//        Assertions.assertEquals(repository.findById(auctionUUID).getUuid(), auctionUUID);
-//    }
+//        Assertions.assertEquals(auctionRepository.findById(auctionUUID), auctionUUID);
+    }
 //
 //    @Test
 //    void shouldFindAuctionGetAuction() {
@@ -191,4 +185,4 @@ class AuctionServiceTest {
 //        //then
 //        Assertions.assertTrue(isBoughtProduct);
 //    }
-}
+//}

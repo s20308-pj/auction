@@ -1,22 +1,23 @@
-package pl.czaplinski.controller;
+package pl.czaplinski.controllers;
 
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.czaplinski.model.Auction;
+import pl.czaplinski.models.Auction;
 
-import pl.czaplinski.service.AuctionService;
+import pl.czaplinski.models.dto.AuctionDTO;
+import pl.czaplinski.services.AuctionService;
 
 import java.util.*;
 
 
 @RestController
-@RequestMapping("/auction")
-public class auctionController {
+@RequestMapping("/auctions")
+public class AuctionController {
 
     private final AuctionService auctionService;
 
-    public auctionController(AuctionService auctionService) {
+    public AuctionController(AuctionService auctionService) {
         this.auctionService = auctionService;
     }
 
@@ -27,6 +28,7 @@ public class auctionController {
 
     @GetMapping("/{uuid}")
     public ResponseEntity<Auction> getAuction(@PathVariable UUID uuid) {
+        System.out.println(uuid);
         return ResponseEntity.ok(auctionService.getAuction(uuid));
     }
 
@@ -46,9 +48,8 @@ public class auctionController {
     }
 
     @PostMapping("/new")
-    public UUID addAuction(@RequestBody Auction auction){
-        // nie mogę dać Auction bo UUID jest tworzony dopiero w swrwisie
-        return auctionService.createNewAuction(auction);
+    public UUID addAuction(@RequestBody AuctionDTO auctionDTO){
+        return auctionService.createNewAuction(auctionDTO);
     }
 }
 

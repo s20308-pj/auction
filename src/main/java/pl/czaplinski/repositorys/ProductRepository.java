@@ -1,8 +1,8 @@
-package pl.czaplinski.repository;
+package pl.czaplinski.repositorys;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.czaplinski.model.Product;
+import pl.czaplinski.models.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {

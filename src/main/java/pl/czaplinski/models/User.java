@@ -1,4 +1,4 @@
-package pl.czaplinski.model;
+package pl.czaplinski.models;
 
 import lombok.Getter;
 import lombok.Setter;

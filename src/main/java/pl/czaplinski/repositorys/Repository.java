@@ -1,7 +1,7 @@
-package pl.czaplinski.repository;
+package pl.czaplinski.repositorys;
 
 
-import pl.czaplinski.model.Auction;
+import pl.czaplinski.models.Auction;
 import java.util.ArrayList;
 import java.util.UUID;
 
